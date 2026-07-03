@@ -1,297 +1,996 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luna Beauty Lounge | Beauty Salon in Islamabad</title>
-  <meta name="description" content="Luna Beauty Lounge is a premium beauty salon in I-8 Markaz Islamabad offering bridal makeup, party makeup, threading, hair styling, and skin care. Book directly on WhatsApp.">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VerityHub – Digital Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --surface: #F9FAFB;
+    --card: #FFFFFF;
+    --accent1: #2563EB;
+    --accent2: #1D4ED8;
+    --accent3: #10B981;
+    --text: #1F2937;
+    --muted: #4B5563;
+    --heading: #111827;
+    --highlight: #DBEAFE;
+    --hover: #0F172A;
+    --border: rgba(37, 99, 235, 0.16);
+    --glow: rgba(37, 99, 235, 0.22);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; letter-spacing: -0.01em; }
+
+  /* ── PROTECTION CSS ── */
+  body, * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  /* Allow text selection only inside form inputs */
+  input, textarea, select {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+  /* Hide page when printing */
+  @media print {
+    body { display: none !important; }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: .1rem 5%; backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.88);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .logo { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 1.6rem;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { background: linear-gradient(135deg, var(--accent1), var(--accent2)); color: #FFFFFF; border: none; padding: 0.65rem 1.6rem; border-radius: 50px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--glow); }
+
+  /* ── PAGES ── */
+  .page { min-height: 100vh; display: none; }
+  .page.active { display: block; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; padding-top: 80px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(219,234,254,0.95) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 80% 80%, rgba(16,185,129,0.16) 0%, transparent 60%);
+  }
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(37,99,235,0.08) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(37,99,235,0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+  .hero-content { position: relative; z-index: 2; text-align: center; max-width: 860px; padding: 0 2rem; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(219,234,254,0.80); border: 1px solid var(--border); border-radius: 50px; padding: 0.4rem 1.2rem; font-size: 0.8rem; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
+  .hero-badge span { width: 6px; height: 6px; background: var(--accent2); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.05; margin-bottom: 1.5rem; letter-spacing: -0.01em; font-style: italic; }
+  .hero-title .line2 { background: linear-gradient(135deg, var(--accent1), var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.75; }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: linear-gradient(135deg, var(--accent1), var(--accent2)); color: #FFFFFF; border: none; padding: 0.9rem 2.2rem; border-radius: 50px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.3s; }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px var(--glow); }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); padding: 0.9rem 2.2rem; border-radius: 50px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.2s; }
+  .btn-outline:hover { background: rgba(219,234,254,0.72); border-color: var(--accent1); }
+
+  /* 3D Floating Cubes */
+  .cubes-container { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .cube { position: absolute; width: 60px; height: 60px; transform-style: preserve-3d; animation: floatCube 8s infinite ease-in-out; }
+  .cube-face { position: absolute; width: 100%; height: 100%; border: 1px solid rgba(37,99,235,0.22); background: rgba(219,234,254,0.55); }
+  .cube-face.front  { transform: translateZ(30px); }
+  .cube-face.back   { transform: rotateY(180deg) translateZ(30px); }
+  .cube-face.left   { transform: rotateY(-90deg) translateZ(30px); }
+  .cube-face.right  { transform: rotateY(90deg) translateZ(30px); }
+  .cube-face.top    { transform: rotateX(90deg) translateZ(30px); }
+  .cube-face.bottom { transform: rotateX(-90deg) translateZ(30px); }
+  .cube1 { top:15%; left:8%; animation-delay:0s; animation-duration:9s; }
+  .cube2 { top:25%; right:10%; animation-delay:-3s; animation-duration:11s; width:40px; height:40px; }
+  .cube3 { bottom:20%; left:15%; animation-delay:-5s; animation-duration:8s; width:30px; height:30px; }
+  .cube4 { bottom:30%; right:8%; animation-delay:-2s; animation-duration:10s; }
+  .cube5 { top:55%; left:5%; animation-delay:-4s; animation-duration:12s; width:50px; height:50px; }
+  @keyframes floatCube { 0%,100%{transform:translateY(0) rotateX(0deg) rotateY(0deg)} 33%{transform:translateY(-30px) rotateX(120deg) rotateY(45deg)} 66%{transform:translateY(15px) rotateX(240deg) rotateY(90deg)} }
+
+  /* Orbs */
+  .orb { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; }
+  .orb1 { width:400px; height:400px; background:rgba(219,234,254,0.90); top:-100px; left:-100px; animation: orbFloat 12s infinite ease-in-out; }
+  .orb2 { width:300px; height:300px; background:rgba(16,185,129,0.12); bottom:-50px; right:-50px; animation: orbFloat 15s infinite ease-in-out reverse; }
+  @keyframes orbFloat { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-40px)} }
+
+  /* ── STATS STRIP ── */
+  .stats-strip { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem 5%; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; }
+  .stat { text-align: center; }
+  .stat-num { font-family:'Playfair Display',serif; font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent1), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+
+  /* ── SECTION ── */
+  .section { padding: 6rem 5%; }
+  .section-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent1); font-weight: 600; margin-bottom: 0.8rem; }
+  .section-title { font-family:'Playfair Display',serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.2rem; }
+  .section-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.75; max-width: 560px; }
+  .text-gradient { background: linear-gradient(135deg, var(--accent1), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+  /* ── SERVICES PAGE ── */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
+  .service-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 2.5rem; position: relative; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: default;
+  }
+  .service-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(219,234,254,0.72), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .service-card:hover { transform: translateY(-8px) rotateX(2deg); box-shadow: 0 20px 60px rgba(37,99,235,0.16); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1.5rem; position: relative; }
+.service-icon img { width: 38px; height: 38px; object-fit: contain; display: block; }
+  .icon-web  { background: linear-gradient(135deg, rgba(37,99,235,0.22), rgba(219,234,254,0.72)); box-shadow: 0 0 30px rgba(37,99,235,0.22); }
+  .icon-design { background: linear-gradient(135deg, rgba(29,78,216,0.20), rgba(16,185,129,0.12)); box-shadow: 0 0 30px rgba(29,78,216,0.20); }
+  .icon-dm { background: linear-gradient(135deg, rgba(16,185,129,0.20), rgba(16,185,129,0.12)); box-shadow: 0 0 30px rgba(16,185,129,0.20); }
+  .icon-seo { background: linear-gradient(135deg, rgba(37,99,235,0.18), rgba(219,234,254,0.70)); box-shadow: 0 0 30px rgba(37,99,235,0.18); }
+  .icon-brand { background: linear-gradient(135deg, rgba(29,78,216,0.20), rgba(219,234,254,0.70)); box-shadow: 0 0 30px rgba(29,78,216,0.20); }
+  .icon-app { background: linear-gradient(135deg, rgba(16,185,129,0.20), rgba(16,185,129,0.12)); box-shadow: 0 0 30px rgba(16,185,129,0.20); }
+  .service-card h3 { font-family:'Playfair Display',serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; }
+  .service-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag { background: rgba(219,234,254,0.72); border: 1px solid rgba(37,99,235,0.16); color: var(--accent1); font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 50px; }
+
+  /* ── PORTFOLIO PAGE ── */
+  .portfolio-filter { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .filter-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 0.5rem 1.2rem; border-radius: 50px; cursor: pointer; font-family:'Inter',sans-serif; font-size: 0.85rem; transition: all 0.2s; }
+  .filter-btn.active, .filter-btn:hover { background: var(--hover); border-color: var(--hover); color: #FFFFFF; }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+  .port-card { border-radius: 20px; overflow: hidden; position: relative; aspect-ratio: 4/3; cursor: pointer; }
+  .port-card-bg { width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative; transition: transform 0.4s; }
+  .port-card:hover .port-card-bg { transform: scale(1.05); }
+  .port-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(15,23,42,0.92) 0%, transparent 60%); display:flex; flex-direction:column; justify-content:flex-end; padding:1.8rem; opacity:0; transition: opacity 0.3s; }
+  .port-card:hover .port-overlay { opacity:1; }
+  .port-cat { font-size:0.75rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom:0.5rem; }
+  .port-card h3 { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; }
+  .port-card p { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; }
+
+  /* Mock project visuals */
+  .proj-a { background: linear-gradient(135deg, #DBEAFE 0%, #F9FAFB 100%); }
+  .proj-b { background: linear-gradient(135deg, #F9FAFB 0%, #DBEAFE 100%); }
+  .proj-c { background: linear-gradient(135deg, #F9FAFB 0%, #DBEAFE 100%); }
+  .proj-d { background: linear-gradient(135deg, #F9FAFB 0%, #DCFCE7 100%); }
+  .proj-e { background: linear-gradient(135deg, #F9FAFB 0%, #DBEAFE 100%); }
+  .proj-f { background: linear-gradient(135deg, #F9FAFB 0%, #DBEAFE 100%); }
+
+  .proj-visual { width:200px; height:120px; border-radius:12px; border:1px solid rgba(37,99,235,0.14); display:flex; align-items:center; justify-content:center; font-size:3rem; box-shadow: 0 20px 60px rgba(15,23,42,0.10); }
+
+  /* ── ABOUT PAGE ── */
+  .about-layout { display: grid; grid-template-columns: 1fr; align-items: center; text-align: center; }
+  .about-visual { position: relative; }
+  .about-3d-card {
+    width: 100%; aspect-ratio: 1; max-width: 420px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 30px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+    box-shadow: 20px 20px 60px rgba(15,23,42,0.10), inset 0 1px 0 rgba(37,99,235,0.08);
+    transition: transform 0.4s;
+  }
+  .team-img{ width:100%; height:100%; object-fit:cover; border-radius:28px; }
+  .about-3d-card:hover { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
+  .about-3d-inner { text-align: center; }
+  .about-logo-3d { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:800; background: linear-gradient(135deg, var(--accent1), var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .about-3d-card::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background: conic-gradient(from 0deg, transparent 0%, rgba(219,234,254,0.55) 50%, transparent 100%); animation: rotateBg 10s linear infinite; }
+  @keyframes rotateBg { to { transform: rotate(360deg); } }
+  .about-card-badge { background: rgba(219,234,254,0.72); border: 1px solid var(--border); border-radius:12px; padding: 0.6rem 1.2rem; font-size:0.85rem; color: var(--accent2); margin-top: 1rem; }
+  .about-text h2 { font-family:'Playfair Display',serif; font-size:2.6rem; font-weight:800; line-height:1.1; margin-bottom:1.2rem; }
+  .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+  .team-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:1.2rem; margin-top:3.5rem; }
+  .team-card { background: var(--card); border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center; transition: transform 0.3s, box-shadow 0.3s; }
+  .team-card:hover { transform:translateY(-5px); box-shadow: 0 15px 40px rgba(219,234,254,0.80); }
+  .team-avatar { width:64px; height:64px; border-radius:50%; margin:0 auto 1rem; display:flex; align-items:center; justify-content:center; font-size:1.6rem; border:2px solid var(--border); }
+  .team-card h4 { font-weight:700; font-size:0.95rem; }
+  .team-card p { font-size:0.8rem; color:var(--muted); margin-top:0.3rem; }
+
+  /* ── PROCESS ── */
+  .process-steps { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1.5rem; margin-top:3rem; }
+  .process-step { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:2rem; position:relative; }
+  .step-num { font-family:'Playfair Display',serif; font-size:3rem; font-weight:800; color:rgba(219,234,254,0.80); line-height:1; }
+  .step-icon { font-size:1.5rem; margin:0.5rem 0 1rem; }
+  .process-step h3 { font-weight:700; margin-bottom:0.5rem; }
+  .process-step p { color:var(--muted); font-size:0.9rem; line-height:1.6; }
+
+  /* ── CONTACT PAGE ── */
+  .contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+  .contact-info h2 { font-family:'Playfair Display',serif; font-size:2.6rem; font-weight:800; line-height:1.1; margin-bottom:1rem; }
+  .contact-info p { color:var(--muted); line-height:1.8; margin-bottom:2rem; }
+  .contact-details { display:flex; flex-direction:column; gap:1rem; margin-bottom:2rem; }
+  .contact-item { display:flex; align-items:center; gap:1rem; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1rem 1.2rem; }
+  .contact-item-icon { font-size:1.2rem; }
+  .contact-item span { font-size:0.9rem; color:var(--muted); }
+  .contact-form { background:var(--card); border:1px solid var(--border); border-radius:24px; padding:2.5rem; }
+  .form-group { margin-bottom:1.2rem; }
+  .form-group label { display:block; font-size:0.85rem; font-weight:600; color:var(--muted); margin-bottom:0.5rem; letter-spacing:0.05em; }
+  .form-group input, .form-group textarea, .form-group select {
+    width:100%; background:var(--surface); border:1px solid var(--border); border-radius:12px;
+    padding:0.9rem 1.2rem; color:var(--text); font-family:'Inter',sans-serif; font-size:0.95rem;
+    outline:none; transition:border-color 0.2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color:var(--accent1); }
+  .form-group textarea { height:120px; resize:vertical; }
+  .form-group select option { background:var(--card); }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .submit-btn { width:100%; background:linear-gradient(135deg, var(--accent1), var(--accent2)); color:#FFFFFF; border:none; padding:1rem; border-radius:12px; font-family:'Inter',sans-serif; font-weight:700; font-size:1rem; cursor:pointer; transition:transform 0.2s, box-shadow 0.3s; margin-top:0.5rem; }
+  .submit-btn:hover { transform:translateY(-2px); box-shadow:0 10px 30px var(--glow); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background:var(--surface); padding:6rem 5%; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .testi-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin-top:3rem; }
+  .testi-card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:2rem; transition:transform 0.3s; }
+  .testi-card:hover { transform:translateY(-5px); }
+  .stars { color:#FFD700; font-size:0.9rem; margin-bottom:1rem; }
+  .testi-text { color:var(--muted); line-height:1.7; font-size:0.95rem; margin-bottom:1.5rem; font-style:italic; }
+  .testi-author { display:flex; align-items:center; gap:0.8rem; }
+  .author-avatar { width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg, var(--accent1), var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:1rem; }
+  .author-name { font-weight:700; font-size:0.9rem; }
+  .author-role { font-size:0.8rem; color:var(--muted); }
+
+  /* ── FOOTER ── */
+  footer { background:var(--surface); border-top:1px solid var(--border); padding:4rem 5% 2rem; }
+  .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+  .footer-brand p { color:var(--muted); font-size:0.9rem; line-height:1.7; margin-top:1rem; max-width:280px; }
+  .footer-col h4 { font-weight:700; font-size:0.9rem; margin-bottom:1.2rem; }
+  .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+  .footer-col a { color:var(--muted); text-decoration:none; font-size:0.9rem; transition:color 0.2s; }
+  .footer-col a:hover { color:var(--accent1); }
+  .footer-bottom { border-top:1px solid var(--border); padding-top:1.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+  .footer-bottom p { color:var(--muted); font-size:0.85rem; }
+  .social-links { display:flex; gap:0.8rem; }
+  .social-link { width:36px; height:36px; border:1px solid var(--border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.9rem; text-decoration:none; transition:all 0.2s; }
+  .social-link:hover { background:var(--accent1); border-color:var(--accent1); }
+
+  /* ── CTA BAND ── */
+  .cta-band { background:linear-gradient(135deg, rgba(219,234,254,0.80), rgba(16,185,129,0.12)); border:1px solid var(--border); border-radius:24px; margin:4rem 5%; padding:4rem; text-align:center; position:relative; overflow:hidden; }
+  .cta-band::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at center, rgba(219,234,254,0.80), transparent 70%); }
+  .cta-band h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,3rem); font-weight:800; position:relative; margin-bottom:1rem; }
+  .cta-band p { color:var(--muted); position:relative; margin-bottom:2rem; font-size:1.05rem; }
+
+  /* Animations */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+  .fade-up { animation: fadeUp 0.7s ease forwards; }
+  .delay-1 { animation-delay:0.1s; }
+  .delay-2 { animation-delay:0.2s; }
+  .delay-3 { animation-delay:0.3s; }
+
+
+  /* ── PROFESSIONAL LIGHT AD THEME ── */
+  h1, h2, h3, h4, h5, h6, .hero-title, .section-title, .about-text h2, .contact-info h2 { color: var(--heading); }
+  nav { box-shadow: 0 8px 30px rgba(15,23,42,0.06); }
+  .logo, .hero-title .line2, .stat-num, .text-gradient, .about-logo-3d {
+    background: linear-gradient(135deg, var(--accent1), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .nav-cta, .btn-primary, .submit-btn {
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  }
+  .nav-cta:hover, .btn-primary:hover, .submit-btn:hover {
+    background: var(--hover);
+    box-shadow: 0 12px 40px rgba(15,23,42,0.25);
+  }
+  .btn-outline:hover, .filter-btn.active, .filter-btn:hover, .social-link:hover {
+    background: var(--hover);
+    border-color: var(--hover);
+    color: #FFFFFF;
+  }
+  .hero-badge, .about-card-badge, .tag {
+    background: var(--highlight);
+    border-color: rgba(37,99,235,0.20);
+    color: var(--accent1);
+  }
+  .service-card, .team-card, .process-step, .testi-card, .contact-form, .contact-item, .about-3d-card {
+    box-shadow: 0 16px 50px rgba(15,23,42,0.06);
+  }
+  .service-card:hover, .team-card:hover, .testi-card:hover {
+    box-shadow: 0 24px 70px rgba(37,99,235,0.16);
+  }
+  .cube-face {
+    border-color: rgba(37,99,235,0.24);
+    background: rgba(219,234,254,0.42);
+  }
+  .orb1 { background: rgba(219,234,254,0.85); }
+  .orb2 { background: rgba(16,185,129,0.14); }
+  .cta-band {
+    background: linear-gradient(135deg, rgba(219,234,254,0.95), rgba(249,250,251,0.92));
+  }
+  .portfolio-filter .filter-btn { background: #FFFFFF; }
+  .port-card { border: 1px solid var(--border); box-shadow: 0 16px 50px rgba(15,23,42,0.06); }
+  .port-card-bg { color: var(--accent1); }
+  .contact-form h3 { color: var(--heading); }
+
+
+
+  /* ── FIXED WHATSAPP BUTTON ── */
+  .whatsapp-float {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 9999;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.35);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .whatsapp-float:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 38px rgba(37, 211, 102, 0.45);
+  }
+  .whatsapp-float svg {
+    width: 31px;
+    height: 31px;
+    fill: #FFFFFF;
+    display: block;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-links { display:none; }
+    .about-layout, .contact-layout { grid-template-columns:1fr; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
+    .form-row { grid-template-columns:1fr; }
+    .team-grid { grid-template-columns:1fr 1fr; }
+  }
+  /* ── TYPOGRAPHY REFINEMENTS ── */
+  .hero-badge { font-family: 'DM Mono', monospace; font-size: 0.75rem; }
+  .section-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; }
+  .section-title { font-family: 'Playfair Display', serif; font-weight: 800; letter-spacing: -0.02em; }
+  .logo { font-family: 'Playfair Display', serif; font-weight: 900; font-style: italic; }
+  .hero-sub { font-weight: 300; letter-spacing: 0.01em; }
+  .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; }
+  .team-card h4 { font-family: 'Playfair Display', serif; font-weight: 700; }
+  .about-text h2 { font-family: 'Playfair Display', serif; font-weight: 800; letter-spacing: -0.02em; }
+  .contact-info h2 { font-family: 'Playfair Display', serif; font-weight: 800; letter-spacing: -0.02em; }
+  .testi-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.98rem; }
+  .cta-band h2 { font-family: 'Playfair Display', serif; font-weight: 800; letter-spacing: -0.02em; }
+  .port-card h3 { font-family: 'Playfair Display', serif; font-weight: 700; }
+  .process-step h3 { font-family: 'Playfair Display', serif; font-weight: 700; letter-spacing: -0.01em; }
+  .contact-form h3 { font-family: 'Playfair Display', serif; font-weight: 700; }
+  .step-num { font-family: 'DM Mono', monospace; font-size: 2.5rem; font-weight: 500; color: rgba(37,99,235,0.16); }
+  .nav-links a { font-size: 0.88rem; font-weight: 400; letter-spacing: 0.02em; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.05em; }
+  .form-group label { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .about-logo-3d { font-family: 'Playfair Display', serif; font-style: italic; }
+  .stat-num { font-family: 'Playfair Display', serif; }
+  .footer-col h4 { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="#home" class="logo">
-        <span class="logo-main">LUNA</span>
-        <span class="logo-sub">Beauty Lounge</span>
-      </a>
-      <button class="menu-btn" type="button" aria-label="Open menu">Menu</button>
-      <nav class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#booking">Booking</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
+<!-- NAV -->
+<nav>
+  <div class="logo"><img src="logo.png" width="100px"></div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')">Home</a></li>
+    <li><a href="#" onclick="showPage('services')">Services</a></li>
+    <li><a href="#" onclick="showPage('portfolio')">Portfolio</a></li>
+    <li><a href="#" onclick="showPage('about')">About</a></li>
+    <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="showPage('contact')">Get a Quote</button>
+</nav>
+
+<!-- ═══════════════════════════════════ HOME PAGE ═══════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="grid-bg"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+
+    <!-- 3D Cubes -->
+    <div class="cubes-container">
+      <div class="cube cube1"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face left"></div><div class="cube-face right"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div>
+      <div class="cube cube2"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face left"></div><div class="cube-face right"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div>
+      <div class="cube cube3"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face left"></div><div class="cube-face right"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div>
+      <div class="cube cube4"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face left"></div><div class="cube-face right"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div>
+      <div class="cube cube5"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face left"></div><div class="cube-face right"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div>
     </div>
-  </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-bg"></div>
-      <div class="hero-overlay"></div>
-      <div class="container hero-grid reveal">
-        <div class="hero-copy">
-          <span class="eyebrow">Premium Beauty Salon In Islamabad</span>
-          <h1>Elegant Beauty Services For Every Special Moment</h1>
-          <p>Luna Beauty Lounge offers premium bridal makeup, party makeup, threading, hair styling, and skin care services in a luxury beauty environment.</p>
-          <div class="hero-actions">
-            <a href="#booking" class="btn btn-primary">Book Appointment</a>
-            <a href="tel:+923101371827" class="btn btn-secondary">Call Now</a>
-          </div>
-          <div class="hero-points">
-            <span>Bridal Makeup</span>
-            <span>Hair Styling</span>
-            <span>Skin Care</span>
-            <span>Threading</span>
-          </div>
-        </div>
+    <div class="hero-content">
+      <div class="hero-badge fade-up"><span></span>Your competitors trust us. Shouldn't you</div>
+      <h1 class="hero-title fade-up delay-1">
+        We Build Digital<br>
+        <span class="line2">Experiences That Convert</span>
+      </h1>
+      <p class="hero-sub fade-up delay-2">From stunning websites to powerful marketing strategies — we help businesses grow faster with design that works and technology that scales.</p>
+      <div class="hero-btns fade-up delay-3">
+        <button class="btn-primary" onclick="showPage('services')">Explore Services</button>
+        <button class="btn-outline" onclick="showPage('portfolio')">View Our Work</button>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="about section-space reveal" id="about">
-      <div class="container about-grid">
-        <div class="about-card">
-          <span class="eyebrow">About Luna</span>
-          <h2>Professional Beauty Lounge With A Luxury Feel</h2>
-          <p>Luna Beauty Lounge is a beauty salon located in I-8 Markaz, Islamabad. The salon focuses on beauty services for women with a premium environment, neat presentation, and direct WhatsApp booking support.</p>
-          <div class="mini-details">
-            <div>
-              <strong>Rating</strong>
-              <span>3.8</span>
-            </div>
-            <div>
-              <strong>Reviews</strong>
-              <span>18</span>
-            </div>
-            <div>
-              <strong>Location</strong>
-              <span>I-8 Markaz</span>
-            </div>
-          </div>
-        </div>
-        <div class="about-side-card">
-          <h3>Salon Highlights</h3>
-          <ul>
-            <li>Direct booking on WhatsApp</li>
-            <li>Luxury and clean beauty environment</li>
-            <li>Professional service presentation</li>
-            <li>Premium beauty services for women</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+  <!-- STATS -->
+  <!-- <div class="stats-strip">
+    <div class="stat"><div class="stat-num">150+</div><div class="stat-label">Projects Delivered</div></div>
+    <div class="stat"><div class="stat-num">98%</div><div class="stat-label">Client Satisfaction</div></div>
+    <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Years of Experience</div></div>
+    <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Industry Awards</div></div>
+  </div> -->
 
-    <section class="services section-space reveal" id="services">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Our Services</span>
-          <h2>All Services With Professional Images</h2>
-          <p>Each service card includes a direct booking option. When the client books, the selected service is added into the booking form automatically.</p>
-        </div>
-        <div class="services-grid">
-          <article class="service-card">
-            <img src="hero-bridal.png" alt="Bridal makeup service">
-            <div class="service-content">
-              <h3>Bridal Makeup</h3>
-              <p>Elegant bridal beauty looks for your special day with premium finishing and luxury presentation.</p>
-              <button class="service-book" data-service="Bridal Makeup">Book This Service</button>
-            </div>
-          </article>
-          <article class="service-card">
-            <img src="service-party-makeup.png" alt="Party makeup service">
-            <div class="service-content">
-              <h3>Party Makeup</h3>
-              <p>Soft glam and party makeup for events, gatherings, celebrations, and personal beauty styling.</p>
-              <button class="service-book" data-service="Party Makeup">Book This Service</button>
-            </div>
-          </article>
-          <article class="service-card">
-            <img src="service-threading.png" alt="Threading service">
-            <div class="service-content">
-              <h3>Threading</h3>
-              <p>Clean and precise threading service performed in a comfortable and professional salon setting.</p>
-              <button class="service-book" data-service="Threading">Book This Service</button>
-            </div>
-          </article>
-          <article class="service-card">
-            <img src="service-hair-styling.png" alt="Hair styling service">
-            <div class="service-content">
-              <h3>Hair Styling</h3>
-              <p>Modern hair styling and finishing for casual looks, events, formal dressing, and special occasions.</p>
-              <button class="service-book" data-service="Hair Styling">Book This Service</button>
-            </div>
-          </article>
-          <article class="service-card">
-            <img src="service-facial.png" alt="Facial and skin care service">
-            <div class="service-content">
-              <h3>Facial And Skin Care</h3>
-              <p>Refreshing facial and skin care treatments focused on calm service, glow, and professional care.</p>
-              <button class="service-book" data-service="Facial And Skin Care">Book This Service</button>
-            </div>
-          </article>
-        </div>
+  <!-- SERVICES PREVIEW -->
+  <section class="section" style="background:var(--surface);">
+    <div style="text-align:center; max-width:700px; margin:0 auto 3.5rem;">
+      <p class="section-eyebrow">What We Do</p>
+      <h2 class="section-title">Everything Your Business Needs to <span class="text-gradient">Thrive Online</span></h2>
+      <p class="section-sub" style="margin:0 auto;">We combine strategy, design, and technology to create digital solutions that drive real results for your business.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon icon-web">🌐</div>
+        <h3>Website Design and Development</h3>
+        <p>Modern business websites designed to look professional, load fast, and generate more leads for your brand.</p>
+        <div class="service-tags"><span class="tag">Business Sites</span><span class="tag">Landing Pages</span><span class="tag">Responsive</span></div>
       </div>
-    </section>
+      <div class="service-card">
+        <div class="service-icon icon-design"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/wordpress.svg" alt="WordPress logo"></div>
+        <h3>WordPress Website Development</h3>
+        <p>Custom WordPress websites with easy content management, premium layouts, and smooth performance.</p>
+        <div class="service-tags"><span class="tag">CMS</span><span class="tag">Custom Themes</span><span class="tag">WordPress</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon icon-app"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/shopify.svg" alt="Shopify logo"></div>
+        <h3>Shopify Website Design</h3>
+        <p>Sales-focused Shopify stores built for e-commerce growth, product visibility, and simple user journeys.</p>
+        <div class="service-tags"><span class="tag">Ecommerce</span><span class="tag">Product Pages</span><span class="tag">Shopify</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon icon-dm">📈</div>
+        <h3>Digital Marketing Services</h3>
+        <p>Smart digital campaigns that improve visibility, bring qualified traffic, and increase conversions.</p>
+        <div class="service-tags"><span class="tag">Campaigns</span><span class="tag">Leads</span><span class="tag">Strategy</span></div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <button class="btn-primary" onclick="showPage('services')">View All Services</button>
+    </div>
+  </section>
 
-    <section class="booking section-space reveal" id="booking">
-      <div class="container booking-grid">
-        <div class="booking-copy">
-          <span class="eyebrow">Booking Section</span>
-          <h2>Book And Send Details Directly To Luna On WhatsApp</h2>
-          <p>Fill in the details below and click the booking button. WhatsApp will open automatically and all appointment details will be sent to Luna Beauty Lounge.</p>
-          <div class="booking-points">
-            <div>
-              <strong>Booking Fields</strong>
-              <span>Name, phone number, service, date, time, and note</span>
-            </div>
-            <div>
-              <strong>Booking Method</strong>
-              <span>Direct WhatsApp message to Luna Beauty Lounge</span>
-            </div>
-            <div>
-              <strong>WhatsApp Number</strong>
-              <span>+92 310 1371827</span>
-            </div>
-            <div>
-              <strong>Salon Hours</strong>
-              <span>Open and closes at 11 PM</span>
-            </div>
-          </div>
-          <ul class="key-points">
-            <li>Choose the required beauty service</li>
-            <li>Enter date and preferred time</li>
-            <li>Send booking directly to Luna</li>
-            <li>Wait for WhatsApp confirmation from the salon</li>
-          </ul>
-        </div>
-        <form class="booking-form" id="bookingForm">
-          <div class="field full">
-            <label for="customerName">Name</label>
-            <input id="customerName" type="text" placeholder="Enter your name" required>
-          </div>
-          <div class="field">
-            <label for="customerPhone">Phone Number</label>
-            <input id="customerPhone" type="tel" placeholder="Enter your phone number" required>
-          </div>
-          <div class="field">
-            <label for="serviceName">Service</label>
-            <select id="serviceName" required>
-              <option value="">Select service</option>
-              <option>Bridal Makeup</option>
-              <option>Facial And Skin Care</option>
-              <option>Hair Styling</option>
-              <option>Party Makeup</option>
-              <option>Threading</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="bookingDate">Date</label>
-            <input id="bookingDate" type="date" required>
-          </div>
-          <div class="field">
-            <label for="bookingTime">Time</label>
-            <input id="bookingTime" type="time" required>
-          </div>
-          <div class="field full">
-            <label for="bookingMessage">Additional Note</label>
-            <textarea id="bookingMessage" rows="5" placeholder="Write any additional request"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary full submit-book">Book On WhatsApp</button>
-        </form>
-      </div>
-    </section>
+  <!-- CTA -->
+  <div class="cta-band">
+    <h2>Ready to Grow Your Business?</h2>
+    <p>Let's talk about your project. Free consultation, no strings attached.</p>
+    <button class="btn-primary" onclick="showPage('contact')">Start a Project Today</button>
+  </div>
 
-    <section class="gallery section-space reveal" id="gallery">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Gallery</span>
-          <h2>Beauty Image Highlights</h2>
-        </div>
-        <div class="gallery-grid">
-          <img src="hero-bridal.png" alt="Bridal makeup image">
-          <img src="service-party-makeup.png" alt="Party makeup image">
-          <img src="service-threading.png" alt="Threading image">
-          <img src="service-hair-styling.png" alt="Hair styling image">
-          <img src="service-facial.png" alt="Facial treatment image">
-        </div>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">VerityHub</div>
+        <p>A full-service digital agency helping businesses build a powerful online presence through design, development, and marketing.</p>
       </div>
-    </section>
-
-    <section class="reviews section-space reveal" id="reviews">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Reviews</span>
-          <h2>Business Profile Summary</h2>
-        </div>
-        <div class="reviews-grid">
-          <div class="review-box score-box">
-            <span class="score">3.8</span>
-            <h3>Google Rating</h3>
-            <p>Based on 18 customer reviews.</p>
-          </div>
-          <div class="review-box">
-            <h3>Beauty Experience</h3>
-            <p>Customers mention salon interior, beauty services, and staff experience on the business profile.</p>
-          </div>
-          <div class="review-box">
-            <h3>Professional Booking</h3>
-            <p>This website helps the salon receive more organized appointment requests directly on WhatsApp.</p>
-          </div>
-        </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('services')">Web Development</a></li>
+          <li><a href="#" onclick="showPage('services')">Graphic Design</a></li>
+          <li><a href="#" onclick="showPage('services')">Digital Marketing</a></li>
+          <li><a href="#" onclick="showPage('services')">SEO</a></li>
+        </ul>
       </div>
-    </section>
-
-    <section class="contact section-space reveal" id="contact">
-      <div class="container contact-grid">
-        <div class="contact-card">
-          <span class="eyebrow">Contact Us</span>
-          <h2>Luna Beauty Lounge</h2>
-          <p><strong>Address</strong><br>M39H+H2J, I-8 Markaz Mosaic District I-8, Islamabad, Pakistan</p>
-          <p><strong>Located In</strong><br>Barklay Business Center</p>
-          <p><strong>Phone</strong><br><a href="tel:+923101371827">+92 310 1371827</a></p>
-          <p><strong>Timing</strong><br>Open and closes at 11 PM</p>
-          <a href="https://wa.me/923101371827?text=Hello%20Luna%20Beauty%20Lounge%2C%20I%20want%20to%20book%20an%20appointment." target="_blank" class="btn btn-primary">Chat On WhatsApp</a>
-        </div>
-        <div class="map-frame">
-          <iframe title="Luna Beauty Lounge Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=M39H%2BH2J%2C%20I-8%20Markaz%20Mosaic%20District%20I-8%2C%20Islamabad%2C%20Pakistan&output=embed"></iframe>
-        </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('about')">About Us</a></li>
+          <li><a href="#" onclick="showPage('portfolio')">Portfolio</a></li>
+          <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+        </ul>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <a href="#home" class="logo footer-logo">
-          <span class="logo-main">LUNA</span>
-          <span class="logo-sub">Beauty Lounge</span>
-        </a>
-        <p>Luxury beauty services for women in I-8 Markaz Islamabad with direct WhatsApp booking.</p>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Rawalpindi, Pakistan</a></li>
+          <li><a href="#">verityhub7@gmail.com</a></li>
+          <li><a href="#">+92 324 5390377</a></li>
+        </ul>
       </div>
-      <div>
-        <h3>Quick Links</h3>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#booking">Booking</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <p>+92 310 1371827</p>
-        <p>Barklay Business Center, I-8 Markaz, Islamabad</p>
-      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 VerityHub. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+</div>
+
+<!-- ═══════════════════════════════════ SERVICES PAGE ═══════════════════════════════════ -->
+<div id="page-services" class="page">
+  <div style="padding-top:100px; background:radial-gradient(ellipse at top, rgba(219,234,254,0.80), transparent 60%);">
+    <section class="section">
+      <p class="section-eyebrow">Our Services</p>
+      <h2 class="section-title">Complete Digital Solutions <span class="text-gradient">Under One Roof</span></h2>
+      <p class="section-sub">We offer end-to-end digital services that help your business establish a strong online presence and attract more customers.</p>
+
+      <div class="services-grid" style="margin-top:3rem;">
+        <div class="service-card">
+          <div class="service-icon icon-web">🌐</div>
+          <h3>Website Design and Development</h3>
+          <p>Professional websites built for strong branding, smooth performance, and better customer conversion.</p>
+          <div class="service-tags"><span class="tag">Business Sites</span><span class="tag">Custom Design</span><span class="tag">Responsive</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon icon-design"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/wordpress.svg" alt="WordPress logo"></div>
+          <h3>WordPress Website Development</h3>
+          <p>Easy to manage WordPress solutions with custom layouts, premium functionality, and scalable structure.</p>
+          <div class="service-tags"><span class="tag">CMS</span><span class="tag">Custom Themes</span><span class="tag">WordPress</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon icon-app"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/shopify.svg" alt="Shopify logo"></div>
+          <h3>Shopify Website Design</h3>
+          <p>Conversion-ready Shopify stores designed to showcase products clearly and improve online sales.</p>
+          <div class="service-tags"><span class="tag">Ecommerce</span><span class="tag">Product Setup</span><span class="tag">Shopify</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon icon-dm">📈</div>
+          <h3>Digital Marketing Services</h3>
+          <p>Targeted digital strategies that increase reach, attract the right audience, and boost business growth.</p>
+          <div class="service-tags"><span class="tag">Lead Generation</span><span class="tag">Marketing</span><span class="tag">Strategy</span></div>
+        </div>
+        <!-- <div class="service-card">
+          <div class="service-icon icon-seo">🔍</div>
+          <h3>SEO Services</h3>
+          <p>Search engine optimization designed to improve visibility, rankings, and long term organic traffic.</p>
+          <div class="service-tags"><span class="tag">Content SEO</span><span class="tag">On Page</span><span class="tag">Technical SEO</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon icon-brand"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/googleads.svg" alt="Google Ads logo"></div>
+          <h3>Google Ads / PPC Services</h3>
+          <p>Performance-driven Google Ads campaigns focused on traffic quality, cost control, and conversion results.</p>
+          <div class="service-tags"><span class="tag">Conversions</span><span class="tag">Google Ads</span><span class="tag">PPC</span></div>
+        </div> -->
+        <div class="service-card">
+          <div class="service-icon icon-web"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/meta.svg" alt="Meta logo"></div>
+          <h3>Facebook / Meta Ads Services</h3>
+          <p>Meta advertising campaigns tailored to grow awareness, engagement, and qualified business inquiries.</p>
+          <div class="service-tags"><span class="tag">Facebook Ads</span><span class="tag">Lead Campaigns</span><span class="tag">Meta</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon icon-design"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/instagram.svg" alt="Social media logo"></div>
+          <h3>Social Media Marketing</h3>
+          <p>Content and campaign management that keeps your brand active, visible, and connected with customers.</p>
+          <div class="service-tags"><span class="tag">Content</span><span class="tag">Instagram</span><span class="tag">Social Media</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section" style="background:var(--surface); border-top:1px solid var(--border);">
+      <div style="text-align:center; max-width:600px; margin:0 auto 1rem;">
+        <p class="section-eyebrow">How We Work</p>
+        <h2 class="section-title">Our Proven <span class="text-gradient">Process</span></h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step"><div class="step-num">01</div><div class="step-icon">💬</div><h3>Discovery</h3><p>We start by deeply understanding your business goals, target audience, and competition.</p></div>
+        <div class="process-step"><div class="step-num">02</div><div class="step-icon">🎯</div><h3>Strategy</h3><p>We craft a tailored digital strategy and roadmap aligned with your business objectives.</p></div>
+        <div class="process-step"><div class="step-num">03</div><div class="step-icon">✏️</div><h3>Design</h3><p>Our designers create stunning visuals and interfaces that capture your brand's essence.</p></div>
+        <div class="process-step"><div class="step-num">04</div><div class="step-icon">⚙️</div><h3>Build</h3><p>Expert developers bring the designs to life with clean, scalable, and optimized code.</p></div>
+        <div class="process-step"><div class="step-num">05</div><div class="step-icon">🚀</div><h3>Launch</h3><p>We thoroughly test and launch your project, then monitor performance and iterate.</p></div>
+      </div>
+    </section>
+
+    <div class="cta-band">
+      <h2>Ready to Get Started?</h2>
+      <p>Tell us about your project and we'll give you a free quote within 24 hours.</p>
+      <button class="btn-primary" onclick="showPage('contact')">Get Free Quote</button>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="logo">VerityHub</div><p>A full-service digital agency helping businesses grow online.</p></div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="#">Web Development</a></li><li><a href="#">Graphic Design</a></li><li><a href="#">Digital Marketing</a></li><li><a href="#">SEO</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="#" onclick="showPage('about')">About Us</a></li><li><a href="#" onclick="showPage('portfolio')">Portfolio</a></li><li><a href="#" onclick="showPage('contact')">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">Rawalpindi, Pakistan</a></li><li><a href="#">verityhub7@gmail.com</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2025 VerityHub. All rights reserved.</p></div>
+    </footer>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ PORTFOLIO PAGE ═══════════════════════════════════ -->
+<div id="page-portfolio" class="page">
+  <div style="padding-top:100px; background:radial-gradient(ellipse at top, rgba(16,185,129,0.12), transparent 60%);">
+    <section class="section">
+      <p class="section-eyebrow">Our Work</p>
+      <h2 class="section-title">Projects That Speak <span class="text-gradient">For Themselves</span></h2>
+      <p class="section-sub">A selection of our recent work across web development, graphic design, and digital marketing.</p>
+
+      <div class="portfolio-filter" style="margin-top:2.5rem;">
+        <button class="filter-btn active">All Work</button>
+        <button class="filter-btn">Web Dev</button>
+        <button class="filter-btn">Graphic Design</button>
+        <button class="filter-btn">Digital Marketing</button>
+        <button class="filter-btn">Branding</button>
+      </div>
+
+      <div class="portfolio-grid">
+        <div class="port-card">
+          <div class="port-card-bg proj-a">
+            <div class="proj-visual"><img src="cv.png" alt="Server Problem" width="350px" height="190px"></div>
+          </div>
+          <div class="port-overlay">
+            <p class="port-cat">Resume Builder</p>
+            <h3>ATS Friendly</h3>
+           
+          </div>
+        </div>
+        <div class="port-card">
+          <div class="port-card-bg proj-b">
+            <div class="proj-visual"><img src="saloon1.png" alt="Server Problem" width="350px" height="190px"></div>
+          </div>
+          <div class="port-overlay">
+            <p class="port-cat">Saloon Website</p>
+            <h3>Deal Appointments</h3>
+          
+          </div>
+        </div>
+        <div class="port-card">
+          <div class="port-card-bg proj-c">
+            <div class="proj-visual"><img src="hotel.png" alt="Server Problem" width="350px" height="190px"></div>
+          </div>
+          <div class="port-overlay">
+            <p class="port-cat">Restaurant Webite</p>
+            <h3>Branding</h3>
+           
+          </div>
+        </div>
+        <div class="port-card">
+          <div class="port-card-bg proj-d">
+            <div class="proj-visual"><img src="Pixel.png" alt="Server Problem" width="350px" height="190px"></div>
+          </div>
+          <div class="port-overlay">
+            <p class="port-cat">Image Converter</p>
+            <h3>Image To PDF and PDF To Image</h3>
+          </div>
+        </div>
+        <div class="port-card">
+          <div class="port-card-bg proj-e">
+            <div class="proj-visual"><img src="portal.png" alt="Server Problem" width="350px" height="190px"></div>
+          </div>
+          <div class="port-overlay">
+            <p class="port-cat">Registration Portal</p>
+            <h3>For Collecting Info and Documents of People</h3>
+            
+          </div>
+        </div>
+        <div class="port-card">
+          <div class="port-card-bg proj-f">
+            <div class="proj-visual"><img src="beauty.png" alt="Server Problem" width="350px" height="190px"></div>
+          </div>
+          <div class="port-overlay">
+            <p class="port-cat">BEauty Saloon Website</p>
+            <h3>Appointment Form</h3>
+          
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-band">
+      <h2>Like What You See?</h2>
+      <p>Let's create something amazing together for your business.</p>
+      <button class="btn-primary" onclick="showPage('contact')">Start Your Project</button>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="logo">VerityHub</div><p>A full-service digital agency helping businesses grow online.</p></div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="#" onclick="showPage('services')">Web Development</a></li><li><a href="#" onclick="showPage('services')">Graphic Design</a></li><li><a href="#" onclick="showPage('services')">Digital Marketing</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="#" onclick="showPage('about')">About Us</a></li><li><a href="#" onclick="showPage('portfolio')">Portfolio</a></li><li><a href="#" onclick="showPage('contact')">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">Rawalpindi, Pakistan</a></li><li><a href="#">verityhub7@gmail.com</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2025 VerityHub. All rights reserved.</p></div>
+    </footer>
+  </div>
+</div>
+
+<!-- ABOUT PAGE -->
+<div id="page-about" class="page">
+  <div style="padding-top:100px; background:radial-gradient(ellipse at top, rgba(16,185,129,0.12), transparent 60%);">
+    <section class="section">
+      <div class="about-layout">
+        <!-- <div class="about-visual">
+          <div class="about-3d-card">
+            <div class="about-3d-inner">
+              <div class="about-logo-3d">NS</div>
+              <div class="about-card-badge">Digital Agency Since 2024</div>
+              <div style="margin-top:1.5rem; display:flex; gap:1rem; justify-content:center;">
+                <div style="text-align:center;"><div style="font-family:Syne,sans-serif;font-size:1.5rem;font-weight:800;color:var(--accent1);">150+</div><div style="font-size:0.75rem;color:var(--muted);">Projects</div></div>
+                <div style="width:1px;background:var(--border);"></div>
+                <div style="text-align:center;"><div style="font-family:Syne,sans-serif;font-size:1.5rem;font-weight:800;color:var(--accent2);">98%</div><div style="font-size:0.75rem;color:var(--muted);">Satisfaction</div></div>
+                <div style="width:1px;background:var(--border);"></div>
+                <div style="text-align:center;"><div style="font-family:Syne,sans-serif;font-size:1.5rem;font-weight:800;color:var(--accent3);">6yr</div><div style="font-size:0.75rem;color:var(--muted);">Experience</div></div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <div class="about-text">
+          <p class="section-eyebrow">About Us</p>
+          <h2>We're a Team of <span class="text-gradient">Digital Creators</span></h2>
+          <p>VerityHub was founded in 2024 with a simple mission: to help businesses of all sizes succeed in the digital world. What started as a small web design studio in Rawalpindi has grown into a full-service digital agency serving clients across Pakistan and beyond.</p>
+          <p>We believe that great digital work starts with deep understanding — of your business, your customers, and your market. That's why every project begins with a thorough discovery process before we write a single line of code or create a single design.</p>
+          <p>Our team of designers, developers, and marketers work together seamlessly to deliver solutions that aren't just beautiful — they drive real, measurable results for your business.</p>
+          <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+            <button class="btn-primary" onclick="showPage('contact')">Work With Us</button>
+            <button class="btn-outline" onclick="showPage('portfolio')">See Our Work</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section" style="background:var(--surface);border-top:1px solid var(--border);">
+      <div style="text-align:center; max-width:600px; margin:0 auto 3rem;">
+        <p class="section-eyebrow">The Team</p>
+        <h2 class="section-title">Meet the People Behind <span class="text-gradient">Your Success</span></h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card"><div class="team-avatar" ><img class="team-img" src="Rehan.jpeg" alt="Loading Error...." ></div><h4>Rehan Satti</h4><p>Web Developer </p></div>
+        <div class="team-card"><div class="team-avatar" ><img class="team-img" src="shayan.jpeg" alt="Loading Error...." ></div><h4>Shayan Haider</h4><p>Web Designer </p></div>
+        <div class="team-card"><div class="team-avatar" ><img class="team-img" src="Ahad.png" alt="Loading Error...." ></div><h4>Abdul Ahad</h4><p>Grapic Designer</p></div>
+       <div class="team-card"><div class="team-avatar" ><img class="team-img" src="Khurram.jpeg" alt="Loading Error...." ></div><h4>Khurram</h4><p>Graphic Designer</p></div>
+        <div class="team-card"><div class="team-avatar" ><img class="team-img" src="Ramish.png" alt="Loading Error...." ></div><h4>Muhammad Ramish</h4><p>Database Deveper</p></div>
+        <div class="team-card"><div class="team-avatar" ><img class="team-img" src="shan.jpeg" alt="Loading Error...." ></div><h4>Muhammad Zeeshan</h4><p>SEO Specialist</p></div> 
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section">
+      <div style="text-align:center; max-width:600px; margin:0 auto 3rem;">
+        <p class="section-eyebrow">Our Values</p>
+        <h2 class="section-title">What Drives <span class="text-gradient">Everything We Do</span></h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" style="text-align:center;">
+          <div class="service-icon icon-web" style="margin:0 auto 1.5rem;">🎯</div>
+          <h3>Results-Focused</h3>
+          <p>Every decision we make is guided by one question: will this generate better results for our clients?</p>
+        </div>
+        <div class="service-card" style="text-align:center;">
+          <div class="service-icon icon-design" style="margin:0 auto 1.5rem;">🤝</div>
+          <h3>True Partnership</h3>
+          <p>We don't just work for you — we work with you, becoming a true extension of your team.</p>
+        </div>
+        <div class="service-card" style="text-align:center;">
+          <div class="service-icon icon-dm" style="margin:0 auto 1.5rem;">🔬</div>
+          <h3>Data-Driven</h3>
+          <p>We back every creative decision with solid data and analytics so nothing is left to guesswork.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="logo">VerityHub</div><p>A full-service digital agency helping businesses grow online.</p></div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="#" onclick="showPage('services')">Web Development</a></li><li><a href="#" onclick="showPage('services')">Graphic Design</a></li><li><a href="#" onclick="showPage('services')">Digital Marketing</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="#" onclick="showPage('about')">About Us</a></li><li><a href="#" onclick="showPage('portfolio')">Portfolio</a></li><li><a href="#" onclick="showPage('contact')">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">Rawalpindi, Pakistan</a></li><li><a href="#">verityhub7@gmail.com</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2025 VerityHub. All rights reserved.</p></div>
+    </footer>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ CONTACT PAGE ═══════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div style="padding-top:100px; background:radial-gradient(ellipse at top, rgba(219,234,254,0.90), transparent 60%);">
+    <section class="section">
+      <div class="contact-layout">
+        <div class="contact-info">
+          <p class="section-eyebrow">Get In Touch</p>
+          <h2 class="section-title">Let's Build Something <span class="text-gradient">Great Together</span></h2>
+          <p>Have a project in mind? We'd love to hear about it. Fill out the form or reach out directly — we respond within 24 hours.</p>
+
+          <div class="contact-details">
+            <div class="contact-item"><div class="contact-item-icon">📧</div><span>verityhub7@gmail.com</span></div>
+                                  </div>
+          <!-- Why choose us -->
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.8rem;">
+            <h3 style="font-family:Syne,sans-serif;font-weight:700;margin-bottom:1.2rem;">Why Work With Us?</h3>
+            <div style="display:flex;flex-direction:column;gap:0.8rem;">
+              <div style="display:flex;align-items:center;gap:0.8rem;"><span style="color:var(--accent1);font-size:1.1rem;">✓</span><span style="font-size:0.9rem;color:var(--muted);">Free consultation & project estimate</span></div>
+              <div style="display:flex;align-items:center;gap:0.8rem;"><span style="color:var(--accent1);font-size:1.1rem;">✓</span><span style="font-size:0.9rem;color:var(--muted);">Response within 24 hours</span></div>
+              <div style="display:flex;align-items:center;gap:0.8rem;"><span style="color:var(--accent1);font-size:1.1rem;">✓</span><span style="font-size:0.9rem;color:var(--muted);">Dedicated project manager assigned</span></div>
+              <div style="display:flex;align-items:center;gap:0.8rem;"><span style="color:var(--accent1);font-size:1.1rem;">✓</span><span style="font-size:0.9rem;color:var(--muted);">Transparent pricing, no hidden fees</span></div>
+              <div style="display:flex;align-items:center;gap:0.8rem;"><span style="color:var(--accent1);font-size:1.1rem;">✓</span><span style="font-size:0.9rem;color:var(--muted);">Ongoing support after launch</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h3 style="font-family:Syne,sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:1.8rem;">Send Us a Message</h3>
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="xxxxx"></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="xxxxx"></div>
+          </div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="xxxxx"></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="xxxxx"></div>
+          <div class="form-group">
+            <label>Service Interested In</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Digital Marketing Services</option>
+              <option>Facebook / Meta Ads Services</option>
+              <option>Multiple Services</option>
+              <option>Shopify Website Design</option>
+              <option>Social Media Marketing</option>
+              <option>Website Design and Development</option>
+              <option>WordPress Website Development</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Tell Us About Your Project</label><textarea placeholder="Describe your project, goals, and any specific requirements..."></textarea></div>
+          <button class="submit-btn" onclick="handleSubmit()">🚀 Send Message</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="logo">VerityHub</div><p>A full-service digital agency helping businesses grow online.</p></div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="#" onclick="showPage('services')">Web Development</a></li><li><a href="#" onclick="showPage('services')">Graphic Design</a></li><li><a href="#" onclick="showPage('services')">Digital Marketing</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="#" onclick="showPage('about')">About Us</a></li><li><a href="#" onclick="showPage('portfolio')">Portfolio</a></li><li><a href="#" onclick="showPage('contact')">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">Rawalpindi, Pakistan</a></li><li><a href="#">verityhub7@gmail.com</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2025 VerityHub. All rights reserved.</p></div>
+    </footer>
+  </div>
+</div>
+
+<a class="whatsapp-float" href="https://wa.me/923245390377" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path d="M16.04 3C8.86 3 3.02 8.82 3.02 15.98c0 2.29.6 4.53 1.75 6.5L3 29l6.69-1.75a13.02 13.02 0 0 0 6.35 1.62h.01c7.17 0 13.01-5.82 13.01-12.99C29.06 8.82 23.22 3 16.04 3Zm0 23.68h-.01c-1.9 0-3.76-.51-5.38-1.47l-.39-.23-3.97 1.04 1.06-3.86-.25-.4a10.7 10.7 0 0 1-1.64-5.78c0-5.95 4.86-10.79 10.84-10.79 2.9 0 5.62 1.13 7.66 3.17a10.72 10.72 0 0 1 3.17 7.64c0 5.95-4.86 10.78-10.83 10.78Zm5.94-8.07c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.74.16-.22.33-.85 1.06-1.04 1.28-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.63-1.62-.97-.86-1.62-1.92-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.55.11-.22.05-.41-.03-.57-.08-.16-.74-1.78-1.01-2.44-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.41-.3.33-1.14 1.11-1.14 2.71s1.17 3.15 1.33 3.37c.16.22 2.31 3.52 5.59 4.94.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.42.19-1.55-.08-.14-.3-.22-.63-.38Z" />
+  </svg>
+</a>
+
+<script>
+  /* ── PROTECTION LAYER ── */
+
+  // 1. Disable right-click context menu
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+  });
+
+  // 2. Disable text selection
+  document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+    return false;
+  });
+
+  // 3. Disable drag (to prevent image/text dragging)
+  document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+  });
+
+  // 4. Block keyboard shortcuts: F12, Ctrl+U, Ctrl+S, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+  document.addEventListener('keydown', function(e) {
+    // F12
+    if (e.key === 'F12' || e.keyCode === 123) {
+      e.preventDefault(); return false;
+    }
+    // Ctrl+U (view source)
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+      e.preventDefault(); return false;
+    }
+    // Ctrl+S (save page)
+    if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
+      e.preventDefault(); return false;
+    }
+    // Ctrl+Shift+I (DevTools)
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) {
+      e.preventDefault(); return false;
+    }
+    // Ctrl+Shift+J (Console)
+    if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j')) {
+      e.preventDefault(); return false;
+    }
+    // Ctrl+Shift+C (Inspector)
+    if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c')) {
+      e.preventDefault(); return false;
+    }
+    // Ctrl+A (select all)
+    if (e.ctrlKey && (e.key === 'a' || e.key === 'A')) {
+      e.preventDefault(); return false;
+    }
+    // Ctrl+P (print)
+    if (e.ctrlKey && (e.key === 'p' || e.key === 'P')) {
+      e.preventDefault(); return false;
+    }
+  });
+
+  // 5. DevTools open detection — redirects or blanks page if DevTools detected
+  (function detectDevTools() {
+    const threshold = 160;
+    setInterval(function() {
+      if (
+        window.outerWidth - window.innerWidth > threshold ||
+        window.outerHeight - window.innerHeight > threshold
+      ) {
+        document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Inter,sans-serif;color:#1F2937;font-size:1.2rem;">⚠️ Access Restricted</div>';
+      }
+    }, 1000);
+  })();
+
+  // 6. Disable CSS user-select via JS (backup for CSS)
+  document.body.style.userSelect = 'none';
+  document.body.style.webkitUserSelect = 'none';
+
+  /* ── SITE FUNCTIONALITY ── */
+
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Portfolio filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // 3D card tilt effect on hover
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      card.style.transform = `translateY(-8px) rotateX(${-y * 0.01}deg) rotateY(${x * 0.01}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  function handleSubmit() {
+    const btn = document.querySelector('.submit-btn');
+    btn.textContent = '✅ Message Sent! We\'ll respond soon.';
+    btn.style.background = 'linear-gradient(135deg, #10B981, #2563EB)';
+    setTimeout(() => {
+      btn.textContent = '🚀 Send Message';
+      btn.style.background = '';
+    }, 4000);
+  }
+</script>
 </body>
 </html>

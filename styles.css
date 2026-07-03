@@ -120,7 +120,7 @@ p { margin: 0; line-height: 1.7; color: var(--muted); }
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('assets/hero-bridal.png');
+  background-image: url('hero-bridal.png');
   background-size: cover;
   background-position: center center;
   transform: scale(1.04);
